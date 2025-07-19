@@ -92,6 +92,29 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Toggle zoom for the current window using <leader>z.
+-- When zoomed, the window takes up full height and width.
+-- Pressing <leader>z again restores the previous window layout.
+
+local zoom_state = {}
+
+function ToggleZoom()
+  local win = vim.api.nvim_get_current_win()
+  if zoom_state[win] then
+    -- Restore original window layout
+    vim.cmd(zoom_state[win])
+    zoom_state[win] = nil
+  else
+    -- Save current layout
+    zoom_state[win] = vim.fn.winrestcmd()
+    -- Maximize this window (full width and height)
+    vim.cmd 'wincmd |'
+    vim.cmd 'wincmd _'
+  end
+end
+
+vim.keymap.set('n', '<leader>z', ToggleZoom, { desc = 'Toggle zoom on current window' })
+
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
