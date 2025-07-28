@@ -375,6 +375,12 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      -- Shortcut for opening ~/.zshrc
+      vim.keymap.set('n', '<leader>sz', function()
+        -- Open ~/.zshrc
+        vim.cmd 'edit ~/.zshrc'
+      end, { desc = '[S]earch [Z]shrc' })
     end,
   },
 
