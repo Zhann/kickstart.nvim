@@ -266,6 +266,8 @@ require('lazy').setup({
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
+    { import = 'zhann.plugins' },
+    { import = 'zhann.themes' },
   },
 
   -- NOTE: Plugins can specify dependencies.
@@ -801,19 +803,6 @@ require('lazy').setup({
     },
   },
 
-  {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    priority = 1000,
-    config = function()
-      require('catppuccin').setup {
-        flavour = 'macchiato', -- latte, frappe, macchiato, mocha
-        transparent_background = true,
-      }
-      vim.cmd.colorscheme 'catppuccin'
-    end,
-  },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -899,8 +888,8 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  { import = 'zhann.plugins' },
-  { import = 'zhann.themes' },
+  --  { import = 'zhann.plugins' },
+  --  { import = 'zhann.themes' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
