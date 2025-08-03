@@ -29,12 +29,13 @@ vim.g.formatters_by_ft = {
 -- Add or modify linters for your file types here
 vim.g.linters_by_ft = {
   markdown = { 'markdownlint' },
-  -- ruby = { 'rubocop' },
-  -- terraform = { 'tflint' },
+  ruby = { 'rubocop' },
+  terraform = { 'tflint' },
 }
 
 -- Tools to automatically install via Mason
 -- Add language servers, linters, and formatters here
+-- Note: LSPs defined in lsp_servers below are automatically installed
 vim.g.mason_ensure_installed = {
   'rubocop', -- Ruby formatter and linter
   'ruby-lsp', -- Ruby language server
@@ -43,7 +44,6 @@ vim.g.mason_ensure_installed = {
   'stylua', -- Lua formatter
   'prettier', -- JSON, YAML, Markdown formatter
   'shfmt', -- Shell script formatter
-  'lua-language-server', -- Lua LSP
 }
 
 -- LSP servers to configure (used by nvim-lspconfig)
