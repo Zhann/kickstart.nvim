@@ -181,6 +181,27 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Remove trailing whitespace on save
+vim.api.nvim_create_autocmd('BufWritePre', {
+  desc = 'Remove trailing whitespace',
+  pattern = '*',
+  command = ':%s/\\s\\+$//e',
+})
+
+-- Fix common typos in command mode
+vim.cmd [[
+  cnoreabbrev W! w!
+  cnoreabbrev Q! q!
+  cnoreabbrev Qall! qall!
+  cnoreabbrev Wq wq
+  cnoreabbrev Wa wa
+  cnoreabbrev wQ wq
+  cnoreabbrev WQ wq
+  cnoreabbrev W w
+  cnoreabbrev Q q
+  cnoreabbrev Qall qall
+]]
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
