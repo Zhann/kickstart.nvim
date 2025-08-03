@@ -643,7 +643,8 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'rubocop',
         'ruby-lsp',
-        'tofu-ls',
+        'terraform-ls', -- Terraform language server
+        'tflint', -- Terraform linter
         'stylua', -- Used to format Lua code
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -697,6 +698,10 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        terraform = { 'tofu_fmt' },
+        tf = { 'tofu_fmt' },
+        tofu = { 'tofu_fmt' },
+        ['terraform-vars'] = { 'tofu_fmt' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
