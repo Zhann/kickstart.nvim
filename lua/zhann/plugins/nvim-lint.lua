@@ -6,7 +6,7 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
-      lint.linters_by_ft = {
+      lint.linters_by_ft = vim.g.linters_by_ft or {
         markdown = { 'markdownlint' },
       }
 

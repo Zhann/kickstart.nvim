@@ -2,6 +2,68 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
+-- [[ User Configuration ]]
+-- Common settings you might want to customize
+-- These are passed to their respective plugins
+
+-- Formatters by file type (used by conform.nvim)
+-- Add or modify formatters for your file types here
+vim.g.formatters_by_ft = {
+  lua = { 'stylua' },
+  terraform = { 'tofu_fmt' },
+  tf = { 'tofu_fmt' },
+  tofu = { 'tofu_fmt' },
+  ['terraform-vars'] = { 'tofu_fmt' },
+  ruby = { 'rubocop' },
+  yaml = { 'prettier' },
+  yml = { 'prettier' },
+  json = { 'prettier' },
+  jsonc = { 'prettier' },
+  markdown = { 'prettier' },
+  sh = { 'shfmt' },
+  bash = { 'shfmt' },
+  zsh = { 'shfmt' },
+}
+
+-- Linters by file type (used by nvim-lint)
+-- Add or modify linters for your file types here
+vim.g.linters_by_ft = {
+  markdown = { 'markdownlint' },
+  -- ruby = { 'rubocop' },
+  -- terraform = { 'tflint' },
+}
+
+-- Tools to automatically install via Mason
+-- Add language servers, linters, and formatters here
+vim.g.mason_ensure_installed = {
+  'rubocop', -- Ruby formatter and linter
+  'ruby-lsp', -- Ruby language server
+  'terraform-ls', -- Terraform language server
+  'tflint', -- Terraform linter
+  'stylua', -- Lua formatter
+  'prettier', -- JSON, YAML, Markdown formatter
+  'shfmt', -- Shell script formatter
+  'lua-language-server', -- Lua LSP
+}
+
+-- LSP servers to configure (used by nvim-lspconfig)
+-- Add any additional LSP server configurations here
+vim.g.lsp_servers = {
+  lua_ls = {
+    settings = {
+      Lua = {
+        completion = {
+          callSnippet = 'Replace',
+        },
+        -- diagnostics = { disable = { 'missing-fields' } },
+      },
+    },
+  },
+  -- Add more LSP configurations as needed:
+  -- ruby_lsp = {},
+  -- terraformls = {},
+}
+
 -- [[ Setting options ]]
 
 vim.o.number = true

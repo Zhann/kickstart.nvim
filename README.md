@@ -2,19 +2,6 @@
 
 A personalized Neovim configuration that started from [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) and evolved into a fully modular setup tailored to my workflow.
 
-## Overview
-
-This configuration began as kickstart.nvim - a fantastic starting point for understanding Neovim configuration. However, it has since been extensively customized and reorganized to suit my specific needs. While the foundation came from kickstart, this is now a standalone configuration that won't track upstream changes.
-
-### Key Features
-
-- **Fully Modular**: All plugins are organized in separate files under `lua/zhann/plugins/`
-- **Clean init.lua**: Core configuration reduced to ~190 lines (from 900+)
-- **LSP Support**: Configured for Ruby, Lua, Terraform/OpenTofu, and more
-- **Modern Plugins**: Using latest tools like blink.cmp for completion
-- **Custom Formatting**: Support for multiple languages with conform.nvim
-- **OpenTofu Integration**: Full support for OpenTofu with tofu_fmt formatter
-
 ## Structure
 
 ```
@@ -51,16 +38,19 @@ This configuration began as kickstart.nvim - a fantastic starting point for unde
 > Backup your previous configuration (if any exists)
 
 1. Backup your existing Neovim configuration:
+
    ```bash
    mv ~/.config/nvim ~/.config/nvim.bak
    ```
 
 2. Clone this configuration:
+
    ```bash
    git clone <your-repo-url> ~/.config/nvim
    ```
 
 3. Start Neovim:
+
    ```bash
    nvim
    ```
@@ -70,15 +60,18 @@ This configuration began as kickstart.nvim - a fantastic starting point for unde
 ## Key Mappings
 
 ### General
+
 - Leader key: `<Space>`
 - Format current buffer: `<leader>f`
 - Toggle file explorer: `\`
 
 ### Window Navigation
+
 - Move between windows: `<C-h/j/k/l>`
 - Toggle window zoom: `<leader>z`
 
 ### LSP (Language Server)
+
 - Go to definition: `grd`
 - Find references: `grr`
 - Rename: `grn`
@@ -86,6 +79,7 @@ This configuration began as kickstart.nvim - a fantastic starting point for unde
 - Go to implementation: `gri`
 
 ### Search (Telescope)
+
 - Find files: `<leader>sf`
 - Live grep: `<leader>sg`
 - Search help: `<leader>sh`
@@ -103,6 +97,40 @@ The following language servers and tools are automatically installed:
 
 ## Customization
 
+### Common Configuration
+
+The most frequently modified settings are now accessible at the top of `init.lua` in the User Configuration section:
+
+```lua
+-- Formatters by file type
+vim.g.formatters_by_ft = {
+  lua = { 'stylua' },
+  ruby = { 'rubocop' },
+  -- Add your formatters here
+}
+
+-- Linters by file type
+vim.g.linters_by_ft = {
+  markdown = { 'markdownlint' },
+  -- Add your linters here
+}
+
+-- Tools to automatically install
+vim.g.mason_ensure_installed = {
+  'ruby-lsp',
+  'stylua',
+  -- Add language servers, linters, and formatters here
+}
+
+-- LSP server configurations
+vim.g.lsp_servers = {
+  lua_ls = { ... },
+  -- Add LSP configurations here
+}
+```
+
+After modifying these settings, restart Neovim for changes to take effect.
+
 ### Adding Plugins
 
 Create a new file in `lua/zhann/plugins/` with the plugin specification:
@@ -119,7 +147,7 @@ return {
 
 ### Modifying Existing Plugins
 
-Each plugin has its own file in `lua/zhann/plugins/`. Simply edit the relevant file and restart Neovim.
+For deeper customization beyond the common settings, each plugin has its own file in `lua/zhann/plugins/`. Edit the relevant file and restart Neovim.
 
 ## Credits
 
@@ -128,4 +156,3 @@ This configuration started from [kickstart.nvim](https://github.com/nvim-lua/kic
 ## License
 
 MIT License (same as kickstart.nvim)
-

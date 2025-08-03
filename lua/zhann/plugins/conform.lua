@@ -29,26 +29,8 @@ return {
         }
       end
     end,
-    formatters_by_ft = {
+    formatters_by_ft = vim.g.formatters_by_ft or {
       lua = { 'stylua' },
-      terraform = { 'tofu_fmt' },
-      tf = { 'tofu_fmt' },
-      tofu = { 'tofu_fmt' },
-      ['terraform-vars'] = { 'tofu_fmt' },
-      ruby = { 'rubocop' },
-      yaml = { 'prettier' },
-      yml = { 'prettier' },
-      json = { 'prettier' },
-      jsonc = { 'prettier' },
-      markdown = { 'prettier' },
-      sh = { 'shfmt' },
-      bash = { 'shfmt' },
-      zsh = { 'shfmt' },
-      -- Conform can also run multiple formatters sequentially
-      -- python = { "isort", "black" },
-      --
-      -- You can use 'stop_after_first' to run the first available formatter from the list
-      -- javascript = { "prettierd", "prettier", stop_after_first = true },
     },
   },
 }
