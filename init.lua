@@ -46,23 +46,6 @@ vim.g.mason_ensure_installed = {
   'shfmt', -- Shell script formatter
 }
 
--- LSP servers to configure (used by nvim-lspconfig)
--- Add any additional LSP server configurations here
-vim.g.lsp_servers = {
-  lua_ls = {
-    settings = {
-      Lua = {
-        completion = {
-          callSnippet = 'Replace',
-        },
-        -- diagnostics = { disable = { 'missing-fields' } },
-      },
-    },
-  },
-  -- Add more LSP configurations as needed:
-  -- ruby_lsp = {},
-  -- terraformls = {},
-}
 
 -- [[ Setting options ]]
 

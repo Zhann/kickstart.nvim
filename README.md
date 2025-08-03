@@ -121,12 +121,6 @@ vim.g.mason_ensure_installed = {
   'stylua',
   -- Add language servers, linters, and formatters here
 }
-
--- LSP server configurations
-vim.g.lsp_servers = {
-  lua_ls = { ... },
-  -- Add LSP configurations here
-}
 ```
 
 After modifying these settings, restart Neovim for changes to take effect.
@@ -148,6 +142,11 @@ return {
 ### Modifying Existing Plugins
 
 For deeper customization beyond the common settings, each plugin has its own file in `lua/zhann/plugins/`. Edit the relevant file and restart Neovim.
+
+Key plugin files:
+- `conform.lua` - Formatter configuration (uses `vim.g.formatters_by_ft`)
+- `nvim-lint.lua` - Linter configuration (uses `vim.g.linters_by_ft`)
+- `nvim-lspconfig.lua` - LSP server configuration and Mason tool installation
 
 ## Credits
 
