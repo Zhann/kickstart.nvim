@@ -641,11 +641,13 @@ require('lazy').setup({
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'rubocop',
-        'ruby-lsp',
+        'rubocop', -- Ruby formatter and linter
+        'ruby-lsp', -- Ruby language server
         'terraform-ls', -- Terraform language server
         'tflint', -- Terraform linter
         'stylua', -- Used to format Lua code
+        'prettier', -- Used for JSON, YAML, Markdown, etc.
+        'shfmt', -- Used to format shell scripts
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -702,6 +704,15 @@ require('lazy').setup({
         tf = { 'tofu_fmt' },
         tofu = { 'tofu_fmt' },
         ['terraform-vars'] = { 'tofu_fmt' },
+        ruby = { 'rubocop' },
+        yaml = { 'prettier' },
+        yml = { 'prettier' },
+        json = { 'prettier' },
+        jsonc = { 'prettier' },
+        markdown = { 'prettier' },
+        sh = { 'shfmt' },
+        bash = { 'shfmt' },
+        zsh = { 'shfmt' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
