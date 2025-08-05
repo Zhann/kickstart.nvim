@@ -46,7 +46,6 @@ vim.g.mason_ensure_installed = {
   'shfmt', -- Shell script formatter
 }
 
-
 -- [[ Setting options ]]
 
 vim.o.number = true
@@ -239,5 +238,7 @@ require('lazy').setup({
     },
   },
 })
+
+require('zhann.tofu_plan').setup()
 
 -- vim: ts=2 sts=2 sw=2 et
